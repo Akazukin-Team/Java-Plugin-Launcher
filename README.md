@@ -1,8 +1,8 @@
-# <PLACEHOLDER_NAME>
+# Java Plugin Launcher
 
-[![Build Status](https://github.com/Akazukin-Team/<PLACEHOLDER_REPO>/actions/workflows/build.yml/badge.svg)](https://github.com/Akazukin-Team/<PLACEHOLDER_REPO>/actions/workflows/build.yml)
+[![Build Status](https://github.com/Akazukin-Team/Java-Plugin-Launcher/actions/workflows/build.yml/badge.svg)](https://github.com/Akazukin-Team/Java-Plugin-Launcher/actions/workflows/build.yml)
 
-<PLACEHOLDER_DESCRIPTION>
+A thin application to implement a microkernel architecture.
 
 ---
 
@@ -22,7 +22,7 @@
 
 ## Features
 
-- <PLACEHOLDER_FEATURES>
+-
 
 ---
 
@@ -33,49 +33,6 @@
 Make sure you have the following installed:
 
 - **Java Development Kit (JDK)** version 8 or later.
-
----
-
-### Installation
-
-#### Using Maven
-
-1. Add the following repository to the `<repositories>` block in your `pom.xml` file:
-
-   ```xml
-   <repository>
-       <id>akazukin-repo</id>
-       <name>Akazukin Repository</name>
-       <url>https://maven.akazukin.org/refer/maven-<PLACEHOLDER_MAVEN>/</url>
-   </repository>
-   ```
-
-2. Add the dependency to the `<dependencies>` block in your `pom.xml` file:
-   ```xml
-   <dependency>
-       <groupId>org.akazukin</groupId>
-       <artifactId><PLACEHOLDER_ARTIFACT></artifactId>
-       <version>VERSION</version>
-   </dependency>
-   ```
-
----
-
-#### Using Gradle
-
-1. Add the repository to the `repositories` block in your `build.gradle` file:
-
-   ```groovy
-   maven {
-       name = 'Akazukin Repository'
-       url = 'https://maven.akazukin.org/refer/maven-<PLACEHOLDER_MAVEN>/'
-   }
-   ```
-
-2. Add the dependency to the `dependencies` block in your `build.gradle` file:
-   ```groovy
-   implementation 'org.akazukin:<PLACEHOLDER_ARTIFACT>:<VERSION>'
-   ```
 
 ---
 
@@ -93,8 +50,8 @@ To build the project from source, follow these steps:
 1. Clone the repository:
 
    ```shell
-   git clone https://github.com/Akazukin-Team/<PLACEHOLDER_REPO>.git
-   cd <PLACEHOLDER_REPO>
+   git clone https://github.com/Akazukin-Team/Java-Plugin-Launcher.git
+   cd Java-Plugin-Launcher
    ```
 
 2. Build the project with Gradle:
@@ -104,11 +61,6 @@ To build the project from source, follow these steps:
    ```
 
    The compiled JAR file will be located in the `build/libs/` directory.
-
-3. Publish to the local Maven repository using the `maven-publish` plugin:
-   ```shell
-   ./gradlew publishToMavenLocal
-   ```
 
 ---
 

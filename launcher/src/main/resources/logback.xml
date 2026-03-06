@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="maxFileSize" value="50MB"/>
+    <property name="totalSizeCap" value="10GB"/>
+    <property name="logPattern"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread/%logger{0}/%level]: %msg \(%file:%line\)%n"/>
+    <property name="charset" value="UTF-8"/>
+
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>${charset}</charset>
+            <pattern>${logPattern}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ALL</level>
+            <onMatch>ACCEPT</onMatch>
+        </filter>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>TRACE</level>
+            <onMatch>DENY</onMatch>
+        </filter>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/latest.log</file>
+        <append>false</append>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <charset>${charset}</charset>
+            <pattern>${logPattern}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>logs/%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxFileSize>${maxFileSize}</maxFileSize>
+            <!-- keep 30 days' worth of history -->
+            <maxHistory>90</maxHistory>
+            <totalSizeCap>${totalSizeCap}</totalSizeCap>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ALL</level>
+            <onMatch>ACCEPT</onMatch>
+        </filter>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>TRACE</level>
+            <onMatch>DENY</onMatch>
+        </filter>
+    </appender>
+
+    <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/error.log</file>
+        <append>false</append>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <charset>${charset}</charset>
+            <pattern>${logPattern}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>logs/%d{yyyy-MM}.%i.error.gz</fileNamePattern>
+            <maxFileSize>${maxFileSize}</maxFileSize>
+            <!-- keep 3 months' worth of history -->
+            <maxHistory>3</maxHistory>
+            <totalSizeCap>${totalSizeCap}</totalSizeCap>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <root level="ALL">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="ERROR_FILE"/>
+    </root>
+</configuration>

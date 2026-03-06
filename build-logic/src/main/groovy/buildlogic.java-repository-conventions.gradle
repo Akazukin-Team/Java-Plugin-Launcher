@@ -22,4 +22,5 @@ repositories {
     }
 
     mavenCentral()
+    mavenLocal()
 }
